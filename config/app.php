@@ -167,7 +167,9 @@ return [
          * Package Service Providers...
          */
 
-        //
+        //Third party
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
 
         /*
          * Application Service Providers...
