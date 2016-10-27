@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('feeds.index');
-});
+Route::get('/', [
+    'uses' => 'UserController@getIndex',
+    'as'   => 'index',
+]);
 
-Route::group(['prefix' => 'user'],function (){
+Route::group(['prefix' => 'user'], function () {
     Route::get('/register', [
         'uses' => 'UserController@getsignUp',
         'as'   => 'get.signup',
@@ -23,8 +24,24 @@ Route::group(['prefix' => 'user'],function (){
 
     Route::post('/register', [
         'uses' => 'UserController@postsignUp',
-        'as' => 'post.signup'
+        'as'   => 'post.signup',
     ]);
+
+    Route::get('/login', [
+        'uses' => 'UserController@getSignIn',
+        'as'   => 'get.login',
+    ]);
+
+    Route::post('/login', [
+        'uses' => 'UserController@postSignIn',
+        'as'   => 'post.login',
+    ]);
+
+    Route::post('/logout', [
+        'uses' => 'UserController@logout',
+        'as'   => 'logout',
+    ]);
+
 });
 
 
