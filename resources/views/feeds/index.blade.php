@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container col-md-8 col-md-offset-2">
     <div class="panel panel-default">
         <div class="panel-body">
             <span class="col-md-1 col-md-1 glyphicon glyphicon-chevron-up">

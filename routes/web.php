@@ -12,9 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('feeds.index');
 });
 
-Auth::routes();
+Route::group(['prefix' => 'user'],function (){
+    Route::get('/register', [
+        'uses' => 'UserController@getsignUp',
+        'as'   => 'get.signup',
+    ]);
 
-Route::get('/home', 'HomeController@index');
+    Route::post('/register', [
+        'uses' => 'UserController@postsignUp',
+        'as' => 'post.signup'
+    ]);
+});
+
+
