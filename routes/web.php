@@ -42,6 +42,26 @@ Route::group(['prefix' => 'user'], function () {
         'as'   => 'logout',
     ]);
 
+    Route::get('/profile', [
+        'uses' => 'PostController@getProfile',
+        'as'   => 'get.profile',
+    ]);
+});
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/shareLink', [
+        'uses' => 'PostController@getShareLink',
+        'as'   => 'get.sharelink',
+    ]);
+
+    Route::post('/shareLink', [
+        'uses' => 'PostController@postShareLink',
+        'as'   => 'post.sharelink',
+    ]);
+
+
 });
 
 
