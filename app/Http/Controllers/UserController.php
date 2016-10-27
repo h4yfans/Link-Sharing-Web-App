@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -9,8 +10,10 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    public function getIndex(){
-        return view('feeds.index');
+    public function getIndex()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('feeds.index', ['posts' => $posts]);
     }
 
 
@@ -37,7 +40,6 @@ class UserController extends Controller
         Auth::login($user);
 
         return redirect()->route('index');
-
     }
 
 

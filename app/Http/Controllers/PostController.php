@@ -9,7 +9,10 @@ class PostController extends Controller
 {
     public function getProfile()
     {
-        return view('feeds.profile');
+        $posts = Post::orderBy('created_at', 'desc')->get();
+
+        return view('feeds.profile', ['posts' => $posts]);
+
     }
 
     public function getShareLink()
@@ -19,14 +22,18 @@ class PostController extends Controller
 
     public function postShareLink(Request $request)
     {
+        $regex = "|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i";
+
         $this->validate($request, [
             'title' => 'required|max:100|unique:posts',
-            'link'  => 'required|unique:posts',
+            'link'  => 'required|unique:posts|',
         ]);
 
-        $post = new Post();
-        $post->title = $request['title'];
-        $post->link = $request['link'];
+        if (preg_match($regex, $request['link'])){
+            $post = new Post();
+            $post->title = $request['title'];
+            $post->link = $request['link'];
+        }
 
         $message = 'There was a error!';
 

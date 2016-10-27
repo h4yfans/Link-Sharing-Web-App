@@ -40,11 +40,13 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/logout', [
         'uses' => 'UserController@logout',
         'as'   => 'logout',
+        'middleware' => 'auth'
     ]);
 
     Route::get('/profile', [
         'uses' => 'PostController@getProfile',
         'as'   => 'get.profile',
+        'middleware' => 'auth'
     ]);
 });
 
@@ -60,8 +62,6 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'PostController@postShareLink',
         'as'   => 'post.sharelink',
     ]);
-
-
 });
 
 
