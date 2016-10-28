@@ -18,7 +18,9 @@ class CreateLikesTable extends Migration
             $table->timestamps();
             $table->string('user_id');
             $table->string('post_id');
-            $table->boolean('is_like');
+            $table->string('vote');
+
+
         });
     }
 

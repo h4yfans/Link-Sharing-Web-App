@@ -12,24 +12,31 @@
 
 
     <div class="container col-md-8 col-md-offset-2">
-
-        @foreach($posts as $post)
-            <div class="panel panel-default">
-                <div class="panel-body">
+        @if(count($posts) == 0)
+            <div class="col-md-8 col-md-offset-2">
+                <p>There is no record(s)</p>
+            </div>
+        @else
+            @foreach($posts as $post)
+                <div class="panel panel-default">
+                    <div class="panel-body">
             <span class="col-md-1 col-md-1 glyphicon glyphicon-chevron-up">
                 <!-- TODO// if feed is upvoted or downvoted, add class 'faded'  -->
             </span>
-                    <div class="col-md-11"><a href="{{url($post->link)}}">{{$post->title}}</a>
-                    </div>
-                    <span class="col-md-1 col-md-1 glyphicon glyphicon-chevron-down">
+                        <div class="col-md-11"><a href="{{url($post->link)}}">{{$post->title}}</a>
+                        </div>
+                        <span class="col-md-1 col-md-1 glyphicon glyphicon-chevron-down">
                 <!-- TODO// if feed is upvoted or downvoted, add class 'faded'  -->
             </span>
-                    <div class="author pull-right">
-                        <strong><a href="">{{$post->user->name}}</a> - {{$post->created_at->format('m/d/Y')}}</strong>
+                        <div class="author pull-right">
+                            <strong><a href="">{{$post->user->name}}</a> - {{$post->created_at->format('m/d/Y')}}
+                            </strong>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        @endif
+
     </div>
 
 @endsection
