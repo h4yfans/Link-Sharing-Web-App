@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Like;
+use App\Post;
 use Auth;
 use Request;
 
 class LikeController extends Controller
 {
-    public function like()
-
-
+    public function UpdateLike()
     {
-
-        if (Request::ajax()){
+        if (Request::ajax()) {
             $class = Request::input('class');
             $postId = Request::input('postId');
 
@@ -29,7 +27,7 @@ class LikeController extends Controller
                     } else {
                         $previousVote->update(['vote' => 'up']);
                     }
-                } else if($isUpvote == 0){
+                } else if ($isUpvote == 0) {
                     if ($previousVote->vote == 'down') {
                         //Cancel out previous downvote
                         $previousVote->delete();
@@ -48,6 +46,16 @@ class LikeController extends Controller
                 $like->save();
             }
         }
+    }
 
+    public function UpdateLikeSum()
+    {
+        if (Request::ajax()) {
+            $postId = Request::input('postId');
+
+            $post = Post::find($postId);
+            return \Response::json(['post_id' => $postId, 'post' => $post->likes()->count()]);
+
+        }
     }
 }
