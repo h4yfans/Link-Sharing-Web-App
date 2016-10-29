@@ -62,8 +62,14 @@
     @yield('content')
 </div>
 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script>
+    var baseUrl = "{{URL::asset('/')}}";
+    var AuthCheck = "{{Auth::check()}}";
+</script>
 <!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{URL::asset('js/vote.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
