@@ -53,7 +53,7 @@
                         <div class="col-xs-12">
                             <div class="author pull-right">
                                 <strong><a href="{{route('get.profile')}}">{{$post->user->name}}</a>
-                                    - {{$post->created_at->format('m/d/Y')}}
+                                    - {{$post->created_at->diffForHumans()}}
                                 </strong>
                             </div>
                         </div>

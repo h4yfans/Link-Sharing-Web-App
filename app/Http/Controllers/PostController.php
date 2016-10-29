@@ -23,7 +23,7 @@ class PostController extends Controller
     public function postShareLink(Request $request)
     {
         $regex = "|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i";
-        $message = "";
+        $message = "There was a error!";
 
         $this->validate($request, [
             'title' => 'required|max:100|unique:posts',
@@ -37,8 +37,6 @@ class PostController extends Controller
 
             if ($request->user()->posts()->save($post)){
                 $message = 'Your link successfully created!';
-            }else{
-                $message = 'There was a error!';
             }
         }
 

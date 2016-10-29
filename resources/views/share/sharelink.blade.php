@@ -26,7 +26,7 @@
                 <div class="form-group row">
                     <label for="example-search-input" class="col-xs-2 col-form-label">Link</label>
                     <div class="col-xs-10">
-                        <input class="form-control" type="search" placeholder="Enter your link here! (with http)"
+                        <input class="form-control" type="search" value="http://"
                                id="example-search-input" name="link">
                     </div>
                 </div>
