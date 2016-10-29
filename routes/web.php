@@ -65,9 +65,12 @@ Route::group(['middleware' => 'auth'], function () {
         'as'   => 'post.sharelink',
     ]);
 
-   Route::post('/vote', [
-       'middleware' => 'auth',
-        'uses' => 'LikeController@like'
+   Route::post('/UpdateLike', [
+        'uses' => 'LikeController@UpdateLike'
+    ]);
+
+    Route::post('/UpdateLikeSum', [
+        'uses' => 'LikeController@UpdateLikeSum'
     ]);
 
 
