@@ -44,11 +44,11 @@
                             </a>
                         </div>
                         <div class="col-xs-1">
-                            <a href=""><span
+                            <a href="#"><span
                                         class="lead glyphicon glyphicon-menu-down vote {{$type === 'down' ? 'active' : ''}}" id="down"></span></a>
                         </div>
                         <div class="col-xs-11">
-                            <div class="votes">{{ $post->likes()->count() }} votes so far</div>
+                            <div class="votes-{{$post->id}}">{{ $post->likes()->count() }} votes so far</div>
                         </div>
                         <div class="col-xs-12">
                             <div class="author pull-right">
