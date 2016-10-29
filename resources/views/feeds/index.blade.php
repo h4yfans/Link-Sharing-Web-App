@@ -29,7 +29,7 @@
                     $type = $vote->vote;
                 }
 
-                echo $post->id
+                // echo $post->id
                 ?>
 
                 <div class="panel panel-default" data-postId="{{$post->id}}">
