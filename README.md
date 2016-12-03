@@ -1,6 +1,6 @@
 ## Synopsis
 
-Small Reddit clone with Laravel 5.2
+Small Reddit clone with Laravel 5.3
 
 ## Installation
 
