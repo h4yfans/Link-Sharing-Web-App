@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use PostService;
 
 class PostController extends Controller
 {
-    public function getProfile()
+    public function getProfile(PostService $postService)
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = $postService->getPosts();
 
-        return view('feeds.profile', ['posts' => $posts]);
+	    return view('feeds.profile', ['posts' => $posts]);
 
     }
 
